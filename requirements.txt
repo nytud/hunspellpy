@@ -1,0 +1,7 @@
+hunspell
+werkzeug
+Flask
+gunicorn
+flask_restful
+# For the clients
+requests
