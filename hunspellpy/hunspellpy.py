@@ -20,6 +20,9 @@ class HunspellPy:
         if not os.path.exists(dic_file):
             dic_file = '/app/.apt/usr/share/hunspell/hu_HU.dic'
             aff_file = '/app/.apt/usr/share/hunspell/hu_HU.aff'
+            if not os.path.exists(dic_file):  # TODO: Alpine Linux workaround
+                dic_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dicts/hu_HU.dic')
+                aff_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dicts/hu_HU.aff')
 
         # Specialise the class for eg. stemming or detailed output...
         available_tasks = {'spell': self._do_spell, 'stem': self._do_stem, 'analyze': self._do_analyze,

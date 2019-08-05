@@ -36,11 +36,13 @@ if __name__ == '__main__':
                  [' st:zsííír is:INSTR'])
     h.remove('zsííír')
     print_assert('OOV w other affix still in the dictionary analyze(zsííírt):', h.analyze('zsííírt'),
-                                                                            [' st:zsííír is:ACC'])
+                 [' st:zsííír is:ACC'])
 
     print_assert('Spell spell(almákkkaal):', h.spell('almákkkaal'), False)
     print_assert('Suggest suggest(medvelövő):', h.suggest('medvelövő'), ['medve-lövő', 'medvelóvő', 'medvelövő',
-                                                                         'medveölvő', 'melegkedvelő'])
+                                                                         'medvelövőt', 'medvelövőn', 'medvelövők',
+                                                                         'medvelövői', 'medvelövőé', 'medvelövőd',
+                                                                         'medvelövőm', 'melegkedvelő'])
     print_assert('Analyze analyze(lealmáz):', h.analyze('lealmáz'),
                  ['ip:PREF sp:le  st:alma po:noun ts:NOM ds:z_ACTION_vrb ts:PRES_INDIC_INDEF_SG_3'])
     h.add('lebölcsészez', 'lealmáz')

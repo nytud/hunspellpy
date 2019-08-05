@@ -4,7 +4,7 @@ A wrapper and REST API implemented in Python for ___Hunspell__ spellchecker and 
 ## Requirements
 
   - _libhunspell-dev_: On Ubuntu 18.04 LTS or higher just `sudo apt install libhunspell-dev`
-  - A dictionary package, eg. _hunspell-hu_: On Ubuntu 18.04 LTS or higher just `sudo apt install hunspell-hu`
+  - A dictionary package, eg. _hunspell-hu_: On Ubuntu 18.04 LTS or higher just `sudo apt install hunspell-hu` (or use the included version)
   - Python 3 (>=3.5, tested with 3.6)
   - Pip to install the additional requirements in requirements.txt
   - (Optional) a cloud service like [Heroku](https://heroku.com) for hosting the API
