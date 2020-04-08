@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env pyhton3
 # -*- coding: utf-8, vim: expandtab:ts=4 -*-
 
 from xtsv import pipeline_rest_api, singleton_store_factory

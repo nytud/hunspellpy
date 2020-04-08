@@ -1,7 +1,6 @@
 hunspell
-werkzeug
-Flask
+xtsv<1.0
+# For Heroku
 gunicorn
-flask_restful
 # For the clients
 requests
