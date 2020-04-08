@@ -101,6 +101,22 @@ A wrapper and REST API implemented in Python for ___Hunspell__ spellchecker and 
 	'UTF-8'
 	```
 
+   - From CLI:
+
+	```bash
+	$ python3 -m hunspellpy --raw  # Interactive mode (currently dstem mode only)
+	Type one word per line, Ctrl+D or empty word to exit
+	--> működik
+	működik	true	['működik']	[[('st', 'működik'), ('po', 'vrb'), ('ts', 'PRES_INDIC_INDEF_SG_3')]]
+	$ python3 -m emmorphpy --raw -i input.txt  # Batch mode
+	működik	true	['működik']	[[('st', 'működik'), ('po', 'vrb'), ('ts', 'PRES_INDIC_INDEF_SG_3')]]
+	
+	a	true	['a']	[[('st', 'a'), ('po', 'noun'), ('ts', 'NOM'), ('al', 'a-vá'), ('al', 'a-val'), ('al', 'a-'), ('al', 'A-s')], [('st', 'a'), ('po', 'det_def'), ('al', 'a-vá'), ('al', 'a-val'), ('al', 'a-'), ('al', 'A-s')]]
+	
+	program	true	['program']	[[('st', 'program'), ('po', 'noun'), ('ts', 'NOM')]]
+	
+	```
+
 ## License
 
 This Python wrapper (around pyhunspell package) is licensed under the LGPL 3.0 license.

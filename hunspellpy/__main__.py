@@ -103,15 +103,14 @@ def input_wrapper():  # TODO: Include in xtsv?
 
 
 def raw_dstem_helper(fh):
-    emmorph = HunspellPy()
+    hunspell = HunspellPy()
     for line in fh:
         line = line.strip()
-        for i in emmorph.dstem(line):
-            if len(i) == 5:
-                print(line, i[2], i[0], i[1], sep='\t')
-            else:
-                print(line, '<unknown>', sep='\t')
-        print()
+        ret = hunspell.process_token(line)
+        if len(ret['anas']) > 0:
+            print(line, ret['spell'], ret['stem'], ret['anas'], sep='\t')
+        else:
+            print(line, '<unknown>', sep='\t')
 
 
 def raw_input_processor(inp_stream):
