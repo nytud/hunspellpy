@@ -1,5 +1,5 @@
 hunspell
-xtsv<1.0
+xtsv>=1.0,<2.0
 # For Heroku
 gunicorn
 # For the clients
