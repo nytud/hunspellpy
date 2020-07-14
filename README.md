@@ -1,6 +1,8 @@
 # HunspellPy
 A wrapper and REST API implemented in Python for ___Hunspell__ spellchecker and morphological analyzer_ 
 
+__WARNING: Hunspell 1.6.2 (Ubuntu 18.04 Bionic) is broken! It yields UnicodeDecodeError occasionally and messes up the analyses of compound words!__
+
 ## Requirements
 
   - _libhunspell-dev_: On Ubuntu 18.04 LTS or higher just `sudo apt install libhunspell-dev`

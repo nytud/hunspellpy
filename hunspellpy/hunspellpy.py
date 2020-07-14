@@ -1,8 +1,10 @@
 #!/usr/bin/env pyhton3
 # -*- coding: utf-8, vim: expandtab:ts=4 -*-
 
-import hunspell
+import sys
 from json import dumps as json_dumps
+
+import hunspell
 
 
 class HunspellPy:
@@ -88,7 +90,11 @@ class HunspellPy:
 
     def _decode_list(self, inp_list):
         enc = self.get_dic_encoding()
-        return [e.decode(enc) for e in inp_list]
+        try:
+            return [e.decode(enc) for e in inp_list]
+        except UnicodeDecodeError:  # TODO: Remove hack! Hunspell 1.6.2 is broken!
+            print('Hunspell 1.6.2 (Ubuntu 18.04 Bionic) is broken! Please upgrade to 1.7!', file=sys.stderr)
+            return []
 
     def get_dic_encoding(self):
         """ Gets encoding of loaded dictionary. """

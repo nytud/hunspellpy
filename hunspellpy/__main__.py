@@ -153,7 +153,7 @@ def main():
     # Init and run the module as it were in xtsv
 
     # The relevant part of config.py
-    hunspellpy = ('hunspellpy.hunspellpy', 'HunspellPy', 'HunspellPy', (),
+    hunspellpy = ('hunspellpy', 'HunspellPy', 'HunspellPy', (),
                   {'source_fields': {'form'}, 'target_fields': ['spell', 'hunspell_anas']})
     tools = [(hunspellpy, ('spell', 'hunspell'))]
 
