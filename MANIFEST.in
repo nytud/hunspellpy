@@ -1,0 +1,3 @@
+include hunspellpy/dicts/hu_HU.aff
+include hunspellpy/dicts/hu_HU.dic
+include hunspellpy/dicts/README.md

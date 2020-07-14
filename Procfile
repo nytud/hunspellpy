@@ -1,1 +1,0 @@
-web: gunicorn hunspellpyrest:app --log-file=-
