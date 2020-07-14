@@ -1,5 +1,4 @@
-hunspell
-xtsv>=1.0,<2.0
+https://github.com/dlt-rilmta/hunspellpy/releases/download/v1.0.0/hunspellpy-1.0.0-py3-none-any.whl
 # For Heroku
 gunicorn
 # For the clients
