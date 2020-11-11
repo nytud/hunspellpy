@@ -40,7 +40,7 @@ install-dep-packages:
 
 check:
 	# Check for file or command
- 	@test -f $(DEP_FILE) >/dev/null 2>&1 || \
+	@test -f $(DEP_FILE) >/dev/null 2>&1 || \
  		 { echo >&2 "File \`$(DEP_FILE)\` could not be found!"; exit 1; }
 
 dist/*.whl dist/*.tar.gz: check # extra
