@@ -20,7 +20,7 @@ with open('README.md') as fh:
 
 setuptools.setup(
     name='hunspellpy',
-    # Get version without actually importing the module
+    # Get version without actually importing the module (else we need the dependencies installed)
     version=getattr(import_pyhton_file('version', 'hunspellpy/version.py'), '__version__'),
     author='dlazesz',  # Will warn about missing e-mail
     description='A wrapper and REST API implemented in Python for Hunspell spellchecker and morphological analyzer',
