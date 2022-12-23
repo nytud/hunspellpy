@@ -24,6 +24,8 @@ __WARNING: Hunspell 1.6.2 (Ubuntu 18.04 Bionic) is broken! It yields UnicodeDeco
 
 ## Install to Heroku
 
+__WARNING: Heroku free tier is discontinued.__
+
   - Register
   - Download Heroku CLI
   - Login to Heroku from the CLI
@@ -35,38 +37,44 @@ __WARNING: Hunspell 1.6.2 (Ubuntu 18.04 Bionic) is broken! It yields UnicodeDeco
   - Push the repository to Heroku
   - Enjoy!
 
+## Build docker image and run as container
+  - `docker build . -t hunspellpyRESTAPI`
+  - `docker run -p8000:80 hunspellpyRESTAPI`
+  - Rest API is running on: http://localhost
+  - To use with https://render.com one must define the environment variable `PORT` to `8000`
+
 ## Usage
 
   - From browser or anyhow through the REST API:
-     - Lemmatization: https://hunspellpy.herokuapp.com/stem/működik
-     - Detailed analysis: https://hunspellpy.herokuapp.com/analyze/működik
-     - Spellcheck: https://hunspellpy.herokuapp.com/spell/működik
-     - Lemmatisation with the corresponding detailed analysis: https://hunspellpy.herokuapp.com/dstem/működik
+     - Lemmatization: https://hunspellpy.onrender.com/stem/működik
+     - Detailed analysis: https://hunspellpy.onrender.com/analyze/működik
+     - Spellcheck: https://hunspellpy.onrender.com/spell/működik
+     - Lemmatisation with the corresponding detailed analysis: https://hunspellpy.onrender.com/dstem/működik
      - The library also support HTTP POST requests to handle multiple words at once. (See examples for details.)
 
 	```python
 	>>> import requests
 	>>> import json
 	>>> word = 'működik'
-	>>> json.loads(requests.get('https://hunspellpy.herokuapp.com/spell/' + word).text)[word]
+	>>> json.loads(requests.get('https://hunspellpy.onrender.com/spell/' + word).text)[word]
 	{'spell': True}
-	>>> json.loads(requests.get('https://hunspellpy.herokuapp.com/stem/' + word).text)[word]
+	>>> json.loads(requests.get('https://hunspellpy.onrender.com/stem/' + word).text)[word]
 	{'stem': ['működik']}
-	>>> json.loads(requests.get('https://hunspellpy.herokuapp.com/analyze/' + word).text)[word]
+	>>> json.loads(requests.get('https://hunspellpy.onrender.com/analyze/' + word).text)[word]
 	{'anas': [[['st', 'működik'], ['po', 'vrb'], ['ts', 'PRES_INDIC_INDEF_SG_3']]]}
-	>>> json.loads(requests.get('https://hunspellpy.herokuapp.com/dstem/' + word).text)[word]
+	>>> json.loads(requests.get('https://hunspellpy.onrender.com/dstem/' + word).text)[word]
     {'stem': ['működik'], 'anas': [[['st', 'működik'], ['po', 'vrb'], ['ts', 'PRES_INDIC_INDEF_SG_3']]], 'spell': True}
 	>>> words = '\n'.join(('form', word, 'word2', ''))  # One word per line (first line is header, trailing newline is needed!)
-	>>> words_out = requests.post('https://hunspellpy.herokuapp.com/spell', files={'file': words}).text.split('\n')
+	>>> words_out = requests.post('https://hunspellpy.onrender.com/spell', files={'file': words}).text.split('\n')
 	>>> print(words_out[1].split('\t'))
 	['működik', '{"spell": true}']
-	>>> words_out = requests.post('https://hunspellpy.herokuapp.com/stem', files={'file': words}).text.split('\n')
+	>>> words_out = requests.post('https://hunspellpy.onrender.com/stem', files={'file': words}).text.split('\n')
 	>>> print(words_out[1].split('\t'))
 	['működik', '{"stem": ["működik"]}']
-	>>> words_out = requests.post('https://hunspellpy.herokuapp.com/analyze', files={'file': words}).text.split('\n')
+	>>> words_out = requests.post('https://hunspellpy.onrender.com/analyze', files={'file': words}).text.split('\n')
 	>>> print(words_out[1].split('\t'))
 	['működik', '{"anas": [[["st", "működik"], ["po", "vrb"], ["ts", "PRES_INDIC_INDEF_SG_3"]]]}']
-    >>> words_out = requests.post('https://hunspellpy.herokuapp.com/dstem', files={'file': words}).text.split('\n')
+    >>> words_out = requests.post('https://hunspellpy.onrender.com/dstem', files={'file': words}).text.split('\n')
 	>>> print(words_out[1].split('\t'))
 	['működik', 'true', '{"stem": ["működik"], "anas": [[["st", "működik"], ["po", "vrb"], ["ts", "PRES_INDIC_INDEF_SG_3"]]]}']
 	```
@@ -110,7 +118,7 @@ __WARNING: Hunspell 1.6.2 (Ubuntu 18.04 Bionic) is broken! It yields UnicodeDeco
 	Type one word per line, Ctrl+D or empty word to exit
 	--> működik
 	működik	true	['működik']	[[('st', 'működik'), ('po', 'vrb'), ('ts', 'PRES_INDIC_INDEF_SG_3')]]
-	$ python3 -m emmorphpy --raw -i input.txt  # Batch mode
+	$ python3 -m hunspellpy --raw -i input.txt  # Batch mode
 	működik	true	['működik']	[[('st', 'működik'), ('po', 'vrb'), ('ts', 'PRES_INDIC_INDEF_SG_3')]]
 	
 	a	true	['a']	[[('st', 'a'), ('po', 'noun'), ('ts', 'NOM'), ('al', 'a-vá'), ('al', 'a-val'), ('al', 'a-'), ('al', 'A-s')], [('st', 'a'), ('po', 'det_def'), ('al', 'a-vá'), ('al', 'a-val'), ('al', 'a-'), ('al', 'A-s')]]

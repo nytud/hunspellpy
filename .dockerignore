@@ -1,0 +1,3 @@
+# Exclude everything except the explicitly enabled files
+*
+!scripts/hunspellpyrest.py
